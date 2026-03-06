@@ -1,0 +1,132 @@
+/* GRUP SEÇİCİ (En az 1 adet istendi) */
+h1, h2, p, a {
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f5f8; /* Görseldeki dış arka plan */
+    padding: 40px;
+    margin: 0;
+}
+
+/* Ana Çerçeve */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    border: 1px solid #d0d4dc;
+    border-radius: 4px;
+}
+
+header {
+    border-bottom: 1px solid #d0d4dc;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid #d0d4dc;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+/* HİYERARŞİK SEÇİCİLER (En az 2 adet istendi) */
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Menüyü yatay yapma şartı */
+header nav ul li {
+    display: inline-block; 
+    margin-left: 10px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #555;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover Efekti Şartı */
+header nav ul li a:hover, header nav ul li a.active {
+    background-color: #8da6d6;
+    color: white;
+}
+
+.header-desc {
+    padding: 20px 30px;
+}
+
+.header-desc p {
+    margin: 0;
+    font-size: 15px;
+    color: #4a4a4a;
+    line-height: 1.6;
+}
+
+/* İki Sütunlu Yapı Şartı (Display Mantığı) */
+.content-wrapper {
+    display: flex;
+    padding: 20px 30px 30px 30px;
+    gap: 20px;
+}
+
+/* Sol İçerik Kutusu Tasarımı */
+.content-left {
+    flex: 1;
+    background-color: #fbeed2; /* Görseldeki sarımtırak renk */
+    border: 1px solid #eadbba;
+    border-radius: 4px;
+    padding: 0; 
+}
+
+/* Sağ Yan Menü Kutusu Tasarımı */
+.sidebar-right {
+    flex: 1;
+    background-color: #e3eff3; /* Görseldeki açık mavi renk */
+    border: 1px solid #c8dce2;
+    border-radius: 4px;
+    padding: 0;
+}
+
+.content-left h2, .sidebar-right h2 {
+    margin: 0;
+    padding: 15px 20px;
+    font-size: 18px;
+    color: #333;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Metin Düzenleme Şartı (En az 3 CSS Özelliği) */
+.content-left p, .sidebar-right p {
+    margin: 15px 20px;
+    font-size: 15px;          /* Özellik 1 */
+    color: #444;              /* Özellik 2 */
+    line-height: 1.7;         /* Özellik 3 */
+    text-align: justify;      /* Özellik 4 */
+}
+
+/* Footer Alanı */
+footer {
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid #d0d4dc;
+    background-color: #eff0f3;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+}
