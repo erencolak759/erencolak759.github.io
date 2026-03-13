@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>İletişim | Eren Çolak</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="header-top">
+                <h1>Eren Çolak</h1>
+                <nav>
+                    <ul>
+                        <li><a href="index.html">Ana Sayfa</a></li>
+                        <li><a href="about.html">Hakkında</a></li>
+                        <li><a href="interest.html">İlgi Alanlarım</a></li>
+                        <li><a href="contact.html" class="active">İletişim</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="header-desc">
+                <p>Benimle iletişime geçmek, projelerimi incelemek veya ortak çalışmalar yapmak için bağlantı
+                    bilgilerim.</p>
+            </div>
+        </header>
+
+        <div class="content-wrapper">
+            <main class="content-left">
+                <h2>İletişim Bilgilerim</h2>
+                <p>Benimle projeler, algoritmalar veya oyun optimizasyonları hakkında aşağıdaki platformlardan doğrudan
+                    iletişime geçebilirsin:</p>
+
+                <ul>
+                    <li>📧 <strong>E-posta:</strong> <a href="mailto:colakeren652@gmail.com">colakeren652@gmail.com</a>
+                    </li>
+                    <li>💻 <strong>GitHub:</strong> <a href="https://github.com/erencolak759"
+                            target="_blank">github.com/erencolak759</a></li>
+                    <li>🔗 <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/erencolak"
+                            target="_blank">linkedin.com/in/erencolak</a></li>
+                    <li>🐦 <strong>X (Twitter):</strong> <a href="https://eren"
+                            target="_blank">twitter.com/erencolak</a></li>
+                </ul>
+            </main>
+
+            <aside class="sidebar-right">
+                <h2>İş Birlikleri</h2>
+                <p>Özellikle 3D oyunlarda performans artırımı veya yenilikçi, gelir odaklı web projeleri üzerine
+                    yapılacak iş birliklerine her zaman açığım.</p>
+                <p>Gönderdiğiniz e-postalara ve iletişim taleplerine genellikle gün içerisinde, en geç 24 saat içinde
+                    mutlaka geri dönüş yapıyorum.</p>
+            </aside>
+        </div>
+
+        <div class="contact-container">
+            <h2 class="form-title">Detaylı İletişim Formu</h2>
+            <form action="#">
+                <div class="form-group">
+                    <label for="full-name">Ad Soyad:</label>
+                    <input type="text" id="full-name" name="full-name" placeholder="Örn: Asaf Karataş">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-posta Adresi:</label>
+                    <input type="email" id="email" name="email" placeholder="ornek@mail.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Başvuru Takip Şifresi:</label>
+                    <input type="password" id="password" name="password" placeholder="Şifrenizi girin">
+                </div>
+
+                <div class="form-section">
+                    <label>İletişim Tercihi:</label>
+                    <div class="selection-box">
+                        <div class="radio-group">
+                            <input type="radio" id="pref-email" name="contact-pref" value="email" checked>
+                            <label for="pref-email">Bana e-posta ile ulaşın</label>
+                        </div>
+                        <div class="radio-group">
+                            <input type="radio" id="pref-phone" name="contact-pref" value="phone">
+                            <label for="pref-phone">Bana telefonla ulaşın</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <label>İlgi Alanları / Yetenekler:</label>
+                    <div class="selection-box">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="skill-html" name="skills" value="HTML">
+                            <label for="skill-html">HTML</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="skill-css" name="skills" value="CSS">
+                            <label for="skill-css">CSS</label>
+                        </div>
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="skill-algo" name="skills" value="Algoritma">
+                            <label for="skill-algo">Algoritma</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Konu:</label>
+                    <select id="subject" name="subject">
+                        <option value="" disabled selected>Lütfen bir konu seçin...</option>
+                        <option value="offer">İş Teklifi</option>
+                        <option value="question">Soru</option>
+                        <option value="feedback">Geri Bildirim</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="file-upload">Özgeçmiş (CV) veya Fotoğraf Yükle:</label>
+                    <input type="file" id="file-upload" name="file-upload">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Mesajınız:</label>
+                    <textarea id="message" name="message" rows="5"
+                        placeholder="Detaylı mesajınızı buraya yazabilirsiniz..."></textarea>
+                </div>
+
+                <div class="button-container">
+                    <button type="submit" class="btn-submit">Gönder</button>
+                    <button type="reset" class="btn-reset">Temizle</button>
+                </div>
+            </form>
+        </div>
+
+        <footer>
+            <p>© 2026 Eren Çolak. Tüm hakları saklıdır.</p>
+        </footer>
+    </div>
+</body>
+
+</html>

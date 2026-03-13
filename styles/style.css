@@ -1,0 +1,295 @@
+/* GRUP SEÇİCİ (En az 1 adet istendi) */
+h1,
+h2,
+p,
+a {
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f4f5f8;
+    /* Görseldeki dış arka plan */
+    padding: 40px;
+    margin: 0;
+}
+
+/* Ana Çerçeve */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    border: 1px solid #d0d4dc;
+    border-radius: 4px;
+}
+
+header {
+    border-bottom: 1px solid #d0d4dc;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid #d0d4dc;
+}
+
+h1 {
+    margin: 0;
+    font-size: 24px;
+    color: #333;
+}
+
+/* HİYERARŞİK SEÇİCİLER (En az 2 adet istendi) */
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Menüyü yatay yapma şartı */
+header nav ul li {
+    display: inline-block;
+    margin-left: 10px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #555;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Hover Efekti Şartı */
+header nav ul li a:hover,
+header nav ul li a.active {
+    background-color: #8da6d6;
+    color: white;
+}
+
+.header-desc {
+    padding: 20px 30px;
+}
+
+.header-desc p {
+    margin: 0;
+    font-size: 15px;
+    color: #4a4a4a;
+    line-height: 1.6;
+}
+
+/* İki Sütunlu Yapı Şartı (Display Mantığı) */
+.content-wrapper {
+    display: flex;
+    padding: 20px 30px 30px 30px;
+    gap: 20px;
+}
+
+/* Sol İçerik Kutusu Tasarımı */
+.content-left {
+    flex: 1;
+    background-color: #fbeed2;
+    /* Görseldeki sarımtırak renk */
+    border: 1px solid #eadbba;
+    border-radius: 4px;
+    padding: 0;
+}
+
+/* Sağ Yan Menü Kutusu Tasarımı */
+.sidebar-right {
+    flex: 1;
+    background-color: #e3eff3;
+    /* Görseldeki açık mavi renk */
+    border: 1px solid #c8dce2;
+    border-radius: 4px;
+    padding: 0;
+}
+
+.content-left h2,
+.sidebar-right h2 {
+    margin: 0;
+    padding: 15px 20px;
+    font-size: 18px;
+    color: #333;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* Metin Düzenleme Şartı (En az 3 CSS Özelliği) */
+.content-left p,
+.sidebar-right p {
+    margin: 15px 20px;
+    font-size: 15px;
+    /* Özellik 1 */
+    color: #444;
+    /* Özellik 2 */
+    line-height: 1.7;
+    /* Özellik 3 */
+    text-align: justify;
+    /* Özellik 4 */
+}
+
+/* Footer Alanı */
+footer {
+    text-align: center;
+    padding: 15px;
+    border-top: 1px solid #d0d4dc;
+    background-color: #eff0f3;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
+    color: #777;
+}
+
+/* =============================================
+   İLETİŞİM FORMU TASARIMI (Box Model Kullanımı)
+   ============================================= */
+
+/* 1. .contact-container: genişlik, margin: auto ile ortalama, padding, border, border-radius */
+.contact-container {
+    width: 50%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px 35px;
+    background-color: #ffffff;
+    border: 2px solid #d0d4dc;
+    border-radius: 8px;
+}
+
+/* Form Başlığı */
+.form-title {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 25px;
+    color: #333;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Her form alanını saran grup */
+.form-group {
+    margin-bottom: 18px;
+}
+
+/* Label stilleri */
+.form-group label,
+.form-section>label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+/* 4. Çoklu seçici: input, select, textarea — width:100%, padding, margin-bottom */
+.contact-container input[type="text"],
+.contact-container input[type="email"],
+.contact-container input[type="password"],
+.contact-container select,
+.contact-container textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+    box-sizing: border-box;
+    background-color: #fff;
+}
+
+/* Focus efekti */
+.contact-container input[type="text"]:focus,
+.contact-container input[type="email"]:focus,
+.contact-container input[type="password"]:focus,
+.contact-container select:focus,
+.contact-container textarea:focus {
+    border-color: #8da6d6;
+    outline: none;
+    box-shadow: 0 0 4px rgba(141, 166, 214, 0.3);
+}
+
+/* Seçim Alanları (Radio/Checkbox) */
+.form-section {
+    margin-bottom: 18px;
+}
+
+.selection-box {
+    background-color: #f8f9fa;
+    padding: 12px 15px;
+    border-radius: 5px;
+    border: 1px solid #e0e0e0;
+}
+
+.radio-group,
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.radio-group:last-child,
+.checkbox-group:last-child {
+    margin-bottom: 0;
+}
+
+.radio-group input[type="radio"],
+.checkbox-group input[type="checkbox"] {
+    margin-right: 8px;
+    width: auto;
+}
+
+.radio-group label,
+.checkbox-group label {
+    font-weight: normal;
+    color: #444;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+/* Dosya yükleme alanı */
+.contact-container input[type="file"] {
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+/* 5. Gönder butonu: arka plan rengi değiştirildi, border kaldırıldı, padding ile büyütüldü */
+.button-container {
+    display: flex;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.btn-submit,
+.btn-reset {
+    flex: 1;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    font-family: Arial, sans-serif;
+    transition: background-color 0.3s ease;
+}
+
+.btn-submit {
+    background-color: #007bff;
+}
+
+.btn-submit:hover {
+    background-color: #0056b3;
+}
+
+.btn-reset {
+    background-color: #dc3545;
+}
+
+.btn-reset:hover {
+    background-color: #a71d2a;
+}
