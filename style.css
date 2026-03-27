@@ -1,0 +1,193 @@
+/* Temel Sıfırlamalar */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Daha modern bir font */
+}
+
+body {
+    background-color: #f4f5f8;
+}
+
+/* GENEL ZORUNLU ŞART: Ana kapsayıcı 100vh ve flex column */
+/* overflow: hidden ile sayfanın kaydırılmasını engelleyerek 100vh'ye sığmasını garanti altına alıyoruz */
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden; 
+}
+
+/* 1) Navbar Bölümü */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    padding: 0 40px;
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #d0d4dc;
+}
+
+.navbar .logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+}
+
+.navbar nav a {
+    text-decoration: none;
+    color: #555;
+    margin-left: 20px;
+    font-size: 14px;
+}
+
+/* 2) Hero Bölümü */
+.hero {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch; 
+    height: 30vh;
+    padding: 20px 40px;
+    gap: 30px;
+}
+
+.hero-text {
+    flex: 1;
+    background-color: #fbeed2; /* Taslaktaki sarı ton */
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-text h2 { margin-bottom: 10px; color: #333; font-size: 24px;}
+.hero-text p { margin-bottom: 20px; color: #444; line-height: 1.6; font-size: 15px;}
+
+.hero-image {
+    flex: 1;
+    background-color: #e3eff3;
+    border: 2px dashed #c8dce2;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #777;
+    font-size: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Taslaktaki gölge */
+}
+
+/* 3) Kartlar Bölümü (Taslağa uygun 4 kart) */
+.cards-section {
+    display: flex;
+    flex-wrap: wrap; /* Sığmazsa alt satıra geçsin */
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    height: 30vh;
+    padding: 20px 40px;
+    background-color: #ffffff;
+}
+
+.card {
+    background-color: #f8f9fa;
+    border: 1px solid #d0d4dc;
+    border-radius: 8px;
+    /* Kartların 4'lü yan yana sığması için daha esnek genişlik */
+    flex: 1 1 calc(25% - 20px); 
+    min-width: 160px;
+    max-width: 280px;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; /* İçerikleri dikeyde dağıt */
+}
+
+.card h3 { font-size: 16px; margin-bottom: 10px; color: #333;}
+.card p { font-size: 14px; color: #666; margin-bottom: 15px; flex-grow: 1;} /* Metni esneterek butonu alta it */
+
+/* 4) Flex Grow Uygulama Bölümü */
+.flex-grow-section {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    height: 20vh;
+    padding: 20px 40px;
+    gap: 20px;
+    background-color: #f4f5f8;
+}
+
+.box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* İçerikleri dikeyde dağıt */
+    align-items: center;
+    border-radius: 10px;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Flex Grow 1-2-1 Kuralları ve Renkler */
+.box-1 {
+    flex-grow: 1;
+    background-color: #d4e3ff; /* Taslaktaki mavi ton */
+}
+
+.box-2 {
+    flex-grow: 2;
+    background-color: #d4f0d8; /* Taslaktaki yeşil ton */
+}
+
+.box-3 {
+    flex-grow: 1;
+    background-color: #ffe6d4; /* Taslaktaki turuncu ton */
+}
+
+.box p { font-weight: bold; font-size: 18px; color: #333; margin-top: 10px;}
+.box span { font-weight: normal; font-size: 14px; color: #666; margin-bottom: 10px;}
+
+/* 5) Footer Bölümü */
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    background-color: #eff0f3;
+    border-top: 1px solid #d0d4dc;
+}
+
+.footer p {
+    font-size: 16px;
+    color: #777;
+    font-weight: bold;
+}
+
+/* Genel Buton Stilleri */
+.btn {
+    padding: 12px 24px;
+    background-color: #8da6d6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    align-self: flex-start; /* Hero içindeki butonu sola hizala */
+    font-size: 15px;
+}
+
+.btn-sm {
+    padding: 8px 16px;
+    background-color: #8da6d6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+}
