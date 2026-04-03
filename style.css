@@ -191,3 +191,159 @@ body {
     font-size: 13px;
     font-weight: bold;
 }
+
+.lab-page {
+    min-height: 150vh; 
+    background-color: #f8f9fa;
+}
+
+.lab-header {
+    text-align: center;
+    padding: 2rem;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.lab-footer {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    color: #666;
+}
+
+/* --- KAPSAYICI (position: relative) --- */
+.lab-main {
+    display: flex;
+    justify-content: center;
+    margin-top: 5rem;
+}
+
+.announcement-card {
+    position: relative; /* KURAL 1: Kapsayıcı relative olmalı */
+    width: 600px;
+    background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+    border-radius: 12px;
+    padding: 3rem 2rem;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    z-index: 1;
+}
+
+/* --- İÇERİK ve Z-INDEX --- */
+.card-content {
+    position: relative;
+    z-index: 10; /* Yazıların şekillerin üstünde kalmasını sağlar */
+}
+
+.card-content h2 {
+    color: #2c3e50;
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+}
+
+.card-content p {
+    color: #34495e;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+/* KURAL 2 & 5: Hover durumunda cursor değişimi ve farklı etkileşimler */
+.location-box {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #fff;
+    border-radius: 8px;
+    font-weight: bold;
+    color: #2c3e50;
+    cursor: pointer; /* Cursor Etkileşimi 1 */
+    transition: all 0.3s ease; /* Etkileşim 1: Transition */
+}
+
+.location-box:hover {
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.6);
+    transform: scale(1.02); /* Hover Animasyonu */
+}
+
+/* --- ABSOLUTE ÖĞELER (En az 3 adet) --- */
+.badge {
+    position: absolute; /* KURAL 3: İçerideki öğeler absolute olmalı */
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: bold;
+    z-index: 15; /* En üstte durmaları için yüksek z-index */
+    transition: transform 0.2s ease;
+}
+
+.badge-free {
+    top: -15px;
+    left: -15px;
+    background-color: #fff3cd;
+    color: #856404;
+    box-shadow: 2px 2px 8px rgba(0,0,0,0.15);
+    cursor: help; /* Cursor Etkileşimi 2 */
+}
+.badge-free:hover {
+    transform: rotate(-5deg) scale(1.1);
+}
+
+.badge-date {
+    top: -15px;
+    right: 20px;
+    background-color: #d4edda;
+    color: #155724;
+    box-shadow: -2px 2px 8px rgba(0,0,0,0.15);
+}
+
+.badge-action {
+    bottom: -20px;
+    right: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    cursor: pointer; /* Cursor Etkileşimi 3 */
+}
+.badge-action:hover {
+    background-color: #f5c6cb;
+}
+.badge-action:active {
+    transform: translateY(2px); /* Etkileşim 2: :active efekti */
+}
+
+/* --- Z-INDEX VE KEYFRAMES (Üst üste binen öğeler) --- */
+.card-decoration {
+    position: absolute;
+    top: 15%;
+    right: 5%;
+    width: 250px;
+    height: 250px;
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 50%;
+    z-index: 2; /* Arkaplan ile metin arasında bir katman */
+    animation: floatShape 4s ease-in-out infinite; /* Etkileşim 3: Keyframes Animasyonu */
+}
+
+@keyframes floatShape {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-15px) scale(1.05); }
+    100% { transform: translateY(0) scale(1); }
+}
+
+/* --- FIXED ÖĞE (Scroll sırasında sabit kalan) --- */
+.fixed-helper {
+    position: fixed; /* KURAL 4: Sayfa kaydırılırken sabit kalan öğe */
+    bottom: 30px;
+    right: 30px;
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 15px 25px;
+    text-decoration: none;
+    border-radius: 30px;
+    font-weight: bold;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 1000; /* Her şeyin üstünde olmalı */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.fixed-helper:hover {
+    background-color: #1a252f;
+}
