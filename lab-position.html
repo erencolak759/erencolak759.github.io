@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eren Çolak | CSS Position Lab</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ---- GENEL SAYFA YAKLAŞIMI (Dark Glassmorphism) ---- */
+        body.lab-page {
+            font-family: 'Inter', Arial, sans-serif;
+            background: #0f172a;
+            /* Premium gradient background */
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(79, 110, 247, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(124, 58, 237, 0.15) 0px, transparent 50%);
+            background-attachment: fixed;
+            color: #f8fafc;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* ---- ANİMASYONLAR (@keyframes) ---- */
+        @keyframes floatAnim {
+            0%   { transform: translateY(0) rotate(0deg); }
+            50%  { transform: translateY(-15px) rotate(5deg); }
+            100% { transform: translateY(0) rotate(0deg); }
+        }
+        @keyframes pulseGlow {
+            0%   { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 0.9; transform: scale(1.1); }
+        }
+
+        /* ---- FIXED: Ekrana sabit buton (position: fixed) ---- */
+        .fixed-helper {
+            position: fixed;      /* position: fixed şartı */
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            text-decoration: none;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;      /* Etkileşimli alan (1) */
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .fixed-helper:hover {
+            transform: translateY(-6px) scale(1.05);
+            background: linear-gradient(135deg, #4f6ef7, #7c3aed);
+            border-color: transparent;
+            box-shadow: 0 15px 35px rgba(124, 58, 237, 0.4);
+        }
+        .fixed-helper:active {
+            transform: translateY(0) scale(0.95); /* :active efekti şartı */
+        }
+
+        /* ---- HEADER ---- */
+        .lab-header {
+            text-align: center;
+            padding: 60px 20px 40px;
+        }
+        .lab-header h1 {
+            font-size: 38px;
+            font-weight: 800;
+            background: linear-gradient(135deg, #a5b4fc, #c4b5fd, #fbcfe8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.5px;
+            margin: 0;
+            text-shadow: 0 10px 30px rgba(165, 180, 252, 0.2);
+        }
+
+        /* ---- MAIN ---- */
+        .lab-main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0 20px 60px;
+        }
+
+        /* ---- KART (position: relative) ---- */
+        .announcement-card {
+            position: relative;   /* position: relative şartı */
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 28px;
+            padding: 80px 48px 48px;
+            max-width: 680px;
+            width: 100%;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            cursor: pointer;      /* Etkileşimli alan (2) */
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.4s ease, border-color 0.4s ease;
+        }
+        .announcement-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 30px 60px -12px rgba(79, 110, 247, 0.25);
+            border-color: rgba(124, 58, 237, 0.4);
+        }
+
+        /* ---- BADGE'LER (position: absolute) ---- */
+        .badge {
+            position: absolute;   /* position: absolute şartı */
+            font-size: 11px;
+            font-weight: 800;
+            padding: 8px 18px;
+            border-radius: 50px;
+            color: #fff;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            cursor: crosshair;    /* Etkileşimli alan (3) */
+            transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 4;           /* z-index şartı */
+        }
+        .badge:hover { 
+            transform: scale(1.15) translateY(-3px); 
+        }
+        
+        .badge-free   { top: 24px; left: 24px; background: linear-gradient(135deg, #10b981, #059669); }
+        .badge-date   { top: 24px; left: 125px; background: linear-gradient(135deg, #3b82f6, #2563eb); }
+        .badge-action { top: 24px; right: 24px; background: linear-gradient(135deg, #ec4899, #e11d48); box-shadow: 0 0 20px rgba(236,72,153,0.4); }
+
+        /* ---- DEKORATİF ÖĞELER (position: absolute + z-index) ---- */
+        .card-decoration-1 {
+            position: absolute;   /* position: absolute şartı */
+            top: -50px;
+            right: -50px;
+            width: 250px;
+            height: 250px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.4) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;           /* İçeriklerin arkasında kalsın */
+            animation: pulseGlow 4s alternate infinite ease-in-out;
+            pointer-events: none;
+        }
+        .card-decoration-2 {
+            position: absolute;   /* position: absolute şartı */
+            bottom: -80px;
+            left: -80px;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(79, 110, 247, 0.3) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 1;           /* İçeriklerin arkasında kalsın */
+            animation: floatAnim 6s infinite ease-in-out;
+            pointer-events: none;
+        }
+
+        /* ---- KART İÇERİĞİ ---- */
+        .card-content {
+            position: relative;
+            z-index: 3;           /* Metinler dekorasyonun üstünde kalsın */
+        }
+        .card-content h2 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+        .card-content p {
+            font-size: 16px;
+            color: #cbd5e1;
+            line-height: 1.8;
+            margin-bottom: 36px;
+        }
+
+        /* ---- KONUM KUTUSU ---- */
+        .location-box {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 14px;
+            padding: 14px 26px;
+            font-size: 15px;
+            color: #e2e8f0;
+            font-weight: 600;
+            cursor: help;         /* Etkileşimli alan (4) */
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 3;
+        }
+        .location-box:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateX(8px);
+            color: #fff;
+        }
+
+        /* ---- FOOTER ---- */
+        .lab-footer {
+            text-align: center;
+            padding: 24px;
+            font-size: 14px;
+            color: #475569;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body class="lab-page">
+
+    <!-- Scroll sırasında sabit duran öğe (position: fixed) -->
+    <a href="index.html" class="fixed-helper">
+        <span>⬅ Ana Sayfaya Dön</span>
+    </a>
+
+    <header class="lab-header">
+        <h1>Üniversite Etkinlik Takvimi</h1>
+    </header>
+
+    <main class="lab-main">
+        <!-- Ana Kapsayıcı (position: relative) -->
+        <div class="announcement-card">
+            
+            <!-- Bilgi Etiketleri (position: absolute) -->
+            <div class="badge badge-free">Ücretsiz</div>
+            <div class="badge badge-date">24 Nisan</div>
+            <div class="badge badge-action">Son Kayıt</div>
+
+            <!-- Üst üste binen dekoratif öğeler (position: absolute & z-index) -->
+            <div class="card-decoration-1"></div>
+            <div class="card-decoration-2"></div>
+
+            <!-- Kart İçeriği (z-index ile en üstte) -->
+            <div class="card-content">
+                <h2>Linux ve Sistem Geliştirme Zirvesi</h2>
+                <p>
+                    Teknoloji Fakültesi öğrencileri için hazırlanan bu etkinlikte, düşük seviyeli programlama 
+                    ve işletim sistemleri mimarisini ele alıyoruz. CSS position özelliklerini (relative, absolute, fixed, z-index, hover ve animasyonlar)
+                    birlikte kullanarak bu çok şık ve modern duyuru arayüzünü oluşturduk.
+                </p>
+                <div class="location-box">📍 Konum: Teknoloji Fakültesi Konferans Salonu</div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="lab-footer">
+        <p>2026 - LAB Position Örnek Çalışması</p>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ödev Uygulamaları | Eren Çolak</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            background: linear-gradient(135deg, #e8eeff 0%, #f0f4fb 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 32px 16px 60px;
+        }
+
+        /* Geri butonu */
+        .back-btn {
+            align-self: flex-start;
+            margin-bottom: 24px;
+            text-decoration: none;
+            color: #4f6ef7;
+            font-size: 14px;
+            font-weight: 600;
+            padding: 8px 18px;
+            border: 1.5px solid #c7d2fe;
+            border-radius: 50px;
+            background: #fff;
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .back-btn:hover {
+            background: #eef2ff;
+            transform: translateX(-3px);
+            box-shadow: 0 4px 12px rgba(79,110,247,0.15);
+        }
+
+        /* Ana kart */
+        .app-wrapper {
+            background: #ffffff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(79,110,247,0.12);
+            padding: 36px 40px;
+            width: 100%;
+            max-width: 680px;
+        }
+
+        /* Tab menu */
+        .tab-menu {
+            display: flex;
+            gap: 0;
+            border-bottom: 2px solid #e8eeff;
+            margin-bottom: 28px;
+        }
+        .tab-btn {
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            padding: 10px 22px;
+            font-size: 14px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #64748b;
+            font-family: 'Inter', Arial, sans-serif;
+            transition: color 0.2s, border-color 0.2s;
+            margin-bottom: -2px;
+        }
+        .tab-btn:hover { color: #4f6ef7; }
+        .tab-btn.active {
+            color: #4f6ef7;
+            border-bottom: 3px solid #4f6ef7;
+        }
+
+        /* Sekme icerikleri */
+        .app-content {
+            display: none;
+            animation: fadeUp 0.3s ease;
+        }
+        .app-content.active { display: block; }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(8px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Form gruplari */
+        .app-group {
+            margin-bottom: 18px;
+        }
+        .app-group label {
+            display: block;
+            margin-bottom: 7px;
+            font-weight: 600;
+            color: #374151;
+            font-size: 13px;
+        }
+        .app-group input, .app-group select {
+            width: 100%;
+            padding: 11px 14px;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            box-sizing: border-box;
+            font-size: 14px;
+            font-family: 'Inter', Arial, sans-serif;
+            background: #fafbfc;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+        .app-group input:focus, .app-group select:focus {
+            border-color: #4f6ef7;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(79,110,247,0.12);
+            background: #fff;
+        }
+
+        .btn-calc {
+            padding: 12px 32px;
+            border: none;
+            border-radius: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            color: white;
+            background: linear-gradient(135deg, #4f6ef7, #6366f1);
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 8px;
+            font-family: 'Inter', Arial, sans-serif;
+        }
+        .btn-calc:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(79,110,247,0.3);
+        }
+
+        /* Sonuc kutulari */
+        .result-box {
+            margin-top: 22px;
+            padding: 18px 20px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 12px;
+            display: none;
+        }
+        .result-box h3 {
+            margin-top: 0;
+            margin-bottom: 12px;
+            color: #1e293b;
+            font-size: 16px;
+            border-bottom: 1px solid rgba(0,0,0,0.07);
+            padding-bottom: 10px;
+        }
+        .result-box p { margin: 6px 0; color: #444; font-size: 14px; }
+
+        .result-success {
+            background: #f0fdf4;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+            font-weight: 700;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 14px;
+            font-size: 13px;
+            color: #94a3b8;
+            margin-top: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="index.html" class="back-btn">← Ana Sayfaya Dön</a>
+
+    <div class="app-wrapper">
+        <div class="tab-menu">
+            <button class="tab-btn active" onclick="sekmeyiAc(event, 'not-uygulamasi')">Not Hesaplama</button>
+            <button class="tab-btn" onclick="sekmeyiAc(event, 'birim-uygulamasi')">Birim Dönüştürücü</button>
+        </div>
+
+        <div id="not-uygulamasi" class="app-content active">
+            <h2 style="margin-bottom: 15px; font-size: 20px;">Öğrenci Not Hesaplama</h2>
+            <div class="app-group">
+                <label for="adSoyad">Ad Soyad:</label>
+                <input type="text" id="adSoyad" placeholder="Örn: Filiz Akın">
+            </div>
+            <div class="app-group">
+                <label for="vizeNotu">Vize Notu:</label>
+                <input type="number" id="vizeNotu" placeholder="0 - 100" min="0" max="100">
+            </div>
+            <div class="app-group">
+                <label for="finalNotu">Final Notu:</label>
+                <input type="number" id="finalNotu" placeholder="0 - 100" min="0" max="100">
+            </div>
+            <button class="btn-calc" onclick="hesaplaNot()">Hesapla</button>
+            <div id="notSonuc" class="result-box">
+                <h3 id="sonucIsim"></h3>
+                <p><strong>Ortalama:</strong> <span id="sonucOrtalama"></span></p>
+                <p><strong>Harf Notu:</strong> <span id="sonucHarf"></span></p>
+                <p><strong>Durum:</strong> <span id="sonucDurum"></span></p>
+            </div>
+        </div>
+
+        <div id="birim-uygulamasi" class="app-content">
+            <h2 style="margin-bottom: 15px; font-size: 20px;">Birim Dönüştürücü</h2>
+            <p style="margin-bottom: 20px; color: #64748b; font-size: 14px;">Farklı mühendislik birimlerini birbirine dönüştürün.</p>
+            <div class="app-group">
+                <label for="donusumDegeri">Değer Giriniz:</label>
+                <input type="number" id="donusumDegeri" placeholder="Örn: 50">
+            </div>
+            <div class="app-group">
+                <label for="donusumTipi">Dönüşüm Tipi:</label>
+                <select id="donusumTipi">
+                    <option value="celsius-fahrenheit">Celsius -> Fahrenheit</option>
+                    <option value="celsius-kelvin">Celsius -> Kelvin</option>
+                    <option value="metre-kilometre">Metre -> Kilometre</option>
+                    <option value="metre-mil">Metre -> Mil</option>
+                    <option value="kilogram-gram">Kilogram -> Gram</option>
+                </select>
+            </div>
+            <button class="btn-calc" onclick="hesaplaDonusum()">Hesapla</button>
+            <div id="donusumSonuc" class="result-box result-success">
+                Sonuç: <span id="sonucDeger"></span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Eren Çolak. Tüm hakları saklıdır.</p>
+    </footer>
+
+    <script>
+        // Sekme Değiştirme
+        function sekmeyiAc(secilenEvent, uygulamaId) {
+            const tumIcerikler = document.getElementsByClassName("app-content");
+            for (let i = 0; i < tumIcerikler.length; i++) {
+                tumIcerikler[i].classList.remove("active");
+            }
+            const tumButonlar = document.getElementsByClassName("tab-btn");
+            for (let i = 0; i < tumButonlar.length; i++) {
+                tumButonlar[i].classList.remove("active");
+            }
+            document.getElementById(uygulamaId).classList.add("active");
+            secilenEvent.currentTarget.classList.add("active");
+        }
+
+        // Not Hesaplama
+        function hesaplaNot() {
+            const adSoyad = document.getElementById('adSoyad').value;
+            const vize = parseFloat(document.getElementById('vizeNotu').value);
+            const final = parseFloat(document.getElementById('finalNotu').value);
+
+            if (!adSoyad || isNaN(vize) || isNaN(final)) {
+                alert("Lütfen tüm alanları eksiksiz doldurun.");
+                return;
+            }
+
+            const ortalama = (vize * 0.4) + (final * 0.6);
+            let harfNotu = "";
+            let durum = ortalama >= 50 ? "Geçti" : "Kaldı";
+
+            if (ortalama >= 90) harfNotu = "AA";
+            else if (ortalama >= 80) harfNotu = "BA";
+            else if (ortalama >= 70) harfNotu = "BB";
+            else if (ortalama >= 60) harfNotu = "CB";
+            else if (ortalama >= 50) harfNotu = "CC";
+            else if (ortalama >= 40) harfNotu = "DC";
+            else if (ortalama >= 30) harfNotu = "DD";
+            else harfNotu = "FF";
+
+            document.getElementById('sonucIsim').innerText = adSoyad;
+            document.getElementById('sonucOrtalama').innerText = ortalama.toFixed(2);
+            document.getElementById('sonucHarf').innerText = harfNotu;
+            document.getElementById('sonucDurum').innerText = durum;
+            document.getElementById('notSonuc').style.display = "block";
+        }
+
+        // Birim Dönüştürücü
+        function hesaplaDonusum() {
+            const deger = parseFloat(document.getElementById('donusumDegeri').value);
+            const tip = document.getElementById('donusumTipi').value;
+
+            if (isNaN(deger)) {
+                alert("Lütfen geçerli bir sayı girin.");
+                return;
+            }
+
+            let sonuc = 0;
+            if (tip === "celsius-fahrenheit") sonuc = (deger * 9/5) + 32;
+            else if (tip === "celsius-kelvin") sonuc = deger + 273.15;
+            else if (tip === "metre-kilometre") sonuc = deger / 1000;
+            else if (tip === "metre-mil") sonuc = deger * 0.000621371;
+            else if (tip === "kilogram-gram") sonuc = deger * 1000;
+
+            document.getElementById('sonucDeger').innerText = sonuc.toLocaleString('tr-TR');
+            document.getElementById('donusumSonuc').style.display = "block";
+        }
+    </script>
+</body>
+</html>

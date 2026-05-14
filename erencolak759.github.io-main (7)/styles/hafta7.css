@@ -1,0 +1,516 @@
+/* ===================================
+ * Hafta 7 - Bootstrap + JavaScript
+ * Custom CSS Dosyası
+ * ===================================*/
+
+/* CSS Değişkenleri (Theme) */
+:root {
+  /* Light Theme */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8f9fa;
+  --text-primary: #333333;
+  --text-secondary: #666666;
+  --border-color: #e0e0e0;
+  --card-bg: #ffffff;
+  --hero-bg: #007bff;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Theme */
+[data-theme="dark"] {
+  --bg-primary: #1a1a1a;
+  --bg-secondary: #2d2d2d;
+  --text-primary: #e8e8e8;
+  --text-secondary: #b0b0b0;
+  --border-color: #3a3a3a;
+  --card-bg: #242424;
+  --hero-bg: #0056b3;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ===================================
+ * Global Styles
+ * ===================================*/
+
+* {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+body.dark-theme {
+  background-color: #1a1a1a;
+  color: #e8e8e8;
+}
+
+body.light-theme {
+  background-color: #ffffff;
+  color: #333333;
+}
+
+/* ===================================
+ * Navbar Styling
+ * ===================================*/
+
+.navbar {
+  box-shadow: var(--shadow);
+  background-color: #212529 !important;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.navbar-nav .nav-link {
+  margin-left: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+  color: #ffc107 !important;
+}
+
+/* ===================================
+ * Hero Section
+ * ===================================*/
+
+.hero-section {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+}
+
+[data-theme="dark"] .hero-section {
+  background: linear-gradient(135deg, #004085 0%, #002752 100%);
+}
+
+.hero-section h1 {
+  animation: slideDown 0.6s ease-out;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-section p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  opacity: 0.95;
+}
+
+.hero-section .btn {
+  transition: all 0.3s ease;
+  font-weight: 600;
+  border-radius: 25px;
+  padding: 0.75rem 1.5rem;
+}
+
+.hero-section .btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================
+ * Cards Section
+ * ===================================*/
+
+.cards-section {
+  background-color: var(--bg-secondary);
+}
+
+[data-theme="dark"] .cards-section {
+  background-color: #2d2d2d;
+}
+
+.card {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  border: none;
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .card {
+  background-color: #242424;
+  color: #e8e8e8;
+}
+
+.card-hover {
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.card-hover:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+}
+
+[data-theme="dark"] .card-hover:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+.card-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.card-text {
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+[data-theme="dark"] .card-text {
+  color: #b0b0b0;
+}
+
+/* ===================================
+ * Form Section
+ * ===================================*/
+
+.form-section {
+  background-color: var(--bg-primary);
+  padding: 3rem 0;
+}
+
+[data-theme="dark"] .form-section {
+  background-color: #1a1a1a;
+}
+
+.form-section h2 {
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.form-control,
+.form-select {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  border: 2px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+[data-theme="dark"] .form-control,
+[data-theme="dark"] .form-select {
+  background-color: #2d2d2d;
+  color: #e8e8e8;
+  border-color: #3a3a3a;
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: var(--card-bg);
+  color: var(--text-primary);
+  border-color: #007bff;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+[data-theme="dark"] .form-control:focus,
+[data-theme="dark"] .form-select:focus {
+  background-color: #2d2d2d;
+  color: #e8e8e8;
+  border-color: #0056b3;
+  box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.25);
+}
+
+.form-check-input {
+  background-color: var(--card-bg);
+  border: 2px solid var(--border-color);
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+[data-theme="dark"] .form-check-input {
+  background-color: #2d2d2d;
+  border-color: #3a3a3a;
+}
+
+.form-check-input:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.form-check-label {
+  cursor: pointer;
+  margin-left: 0.5rem;
+  color: var(--text-primary);
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+  font-weight: 600;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #218838;
+  transform: translateY(-2px);
+}
+
+.invalid-feedback {
+  display: block;
+  color: #dc3545;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+}
+
+/* ===================================
+ * Alert Styles
+ * ===================================*/
+
+.alert {
+  border-radius: 1rem;
+  border: none;
+  animation: slideIn 0.4s ease-out;
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+[data-theme="dark"] .alert-danger {
+  background-color: #5c2e2e;
+  color: #f8d7da;
+}
+
+.alert-success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+[data-theme="dark"] .alert-success {
+  background-color: #2b5f2f;
+  color: #d4edda;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===================================
+ * Result Section
+ * ===================================*/
+
+.result-section {
+  background-color: var(--bg-secondary);
+}
+
+[data-theme="dark"] .result-section {
+  background-color: #2d2d2d;
+}
+
+.result-section .card {
+  background-color: var(--card-bg);
+  border: 2px solid #28a745;
+  border-radius: 1rem;
+}
+
+[data-theme="dark"] .result-section .card {
+  background-color: #242424;
+  border-color: #28a745;
+}
+
+.result-section .alert {
+  border: none;
+  border-radius: 1.5rem;
+}
+
+.result-section ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.result-section ul li {
+  padding-left: 1.5rem;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+.result-section ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* ===================================
+ * Footer
+ * ===================================*/
+
+footer {
+  background-color: #212529 !important;
+  color: #ffffff;
+  border-top: 2px solid #007bff;
+  margin-top: auto;
+}
+
+footer p {
+  margin: 0;
+}
+
+/* ===================================
+ * Buttons
+ * ===================================*/
+
+.btn-outline-light {
+  border-color: #ffffff;
+  color: #ffffff;
+}
+
+.btn-outline-light:hover,
+.btn-outline-light:focus {
+  background-color: #ffffff;
+  color: #212529;
+  border-color: #ffffff;
+}
+
+.btn-outline-secondary {
+  border: 2px solid #6c757d;
+  color: #6c757d;
+}
+
+.btn-outline-secondary:hover {
+  background-color: #6c757d;
+  color: #ffffff;
+}
+
+.btn-outline-success {
+  border-color: #28a745;
+  color: #28a745;
+}
+
+[data-theme="dark"] .btn-outline-success {
+  border-color: #28a745;
+  color: #28a745;
+}
+
+.btn-outline-success:hover {
+  background-color: #28a745;
+  color: #ffffff;
+}
+
+/* ===================================
+ * Responsive Design
+ * ===================================*/
+
+@media (max-width: 768px) {
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .hero-section p {
+    font-size: 1.1rem;
+  }
+
+  .form-section {
+    padding: 2rem 0.5rem;
+  }
+
+  .card {
+    margin-bottom: 1rem;
+  }
+
+  .d-flex.gap-2 {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-section {
+    padding: 2rem 1rem;
+  }
+
+  .hero-section h1 {
+    font-size: 1.5rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.2rem;
+  }
+
+  .form-section {
+    padding: 1.5rem 0.5rem;
+  }
+
+  .btn-lg {
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* ===================================
+ * Utility Classes
+ * ===================================*/
+
+.rounded-3 {
+  border-radius: 0.5rem;
+}
+
+.rounded-4 {
+  border-radius: 0.75rem;
+}
+
+.gap-2 {
+  gap: 1rem;
+}
+
+/* ===================================
+ * Print Styles
+ * ===================================*/
+
+@media print {
+  .navbar,
+  footer {
+    display: none;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+}

@@ -1,0 +1,453 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+/* GRUP SEÇİCİ (En az 1 adet istendi) */
+h1,
+h2,
+p,
+a {
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+body {
+    background-color: #eef2f7;
+    padding: 40px;
+    margin: 0;
+}
+
+/* Ana Çerçeve */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #f8f9fa;
+    border: 1px solid #dce3f0;
+    border-radius: 14px;
+    box-shadow: 0 6px 32px rgba(60, 90, 138, 0.10);
+    overflow: hidden;
+}
+
+header {
+    border-bottom: 1px solid #dce3f0;
+}
+
+.header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid #dce3f0;
+    background: linear-gradient(135deg, #f4f7ff 0%, #ffffff 100%);
+}
+
+h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1e293b;
+    letter-spacing: -0.3px;
+}
+
+/* HİYERARŞİK SEÇİCİLER (En az 2 adet istendi) */
+header nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Menüyü yatay yapma şartı */
+header nav ul li {
+    display: inline-block;
+    margin-left: 6px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: #64748b;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Hover Efekti Şartı */
+header nav ul li a:hover,
+header nav ul li a.active {
+    background-color: #4f6ef7;
+    color: white;
+}
+
+.header-desc {
+    padding: 16px 30px;
+    background-color: #f8faff;
+}
+
+.header-desc p {
+    margin: 0;
+    font-size: 14px;
+    color: #64748b;
+    line-height: 1.6;
+}
+
+/* İki Sütunlu Yapı Şartı (Display Mantığı) */
+.content-wrapper {
+    display: flex;
+    padding: 24px 30px 30px 30px;
+    gap: 20px;
+}
+
+/* Sol İçerik Kutusu Tasarımı */
+.content-left {
+    flex: 1;
+    background-color: #fffbf0;
+    border: 1px solid #f0e6c8;
+    border-radius: 10px;
+    padding: 0;
+    transition: box-shadow 0.2s;
+}
+
+.content-left:hover {
+    box-shadow: 0 4px 16px rgba(234, 179, 8, 0.10);
+}
+
+/* Sağ Yan Menü Kutusu Tasarımı */
+.sidebar-right {
+    flex: 1;
+    background-color: #f0f7fb;
+    border: 1px solid #c8dce2;
+    border-radius: 10px;
+    padding: 0;
+    transition: box-shadow 0.2s;
+}
+
+.sidebar-right:hover {
+    box-shadow: 0 4px 16px rgba(141, 166, 214, 0.12);
+}
+
+.content-left h2,
+.sidebar-right h2 {
+    margin: 0;
+    padding: 14px 20px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Metin Düzenleme Şartı (En az 3 CSS Özelliği) */
+.content-left p,
+.sidebar-right p {
+    margin: 14px 20px;
+    font-size: 14px;
+    /* Özellik 1 */
+    color: #444;
+    /* Özellik 2 */
+    line-height: 1.75;
+    /* Özellik 3 */
+    text-align: justify;
+    /* Özellik 4 */
+}
+
+/* Footer Alanı */
+footer {
+    text-align: center;
+    padding: 14px;
+    border-top: 1px solid #dce3f0;
+    background-color: #f0f2f6;
+}
+
+footer p {
+    margin: 0;
+    font-size: 13px;
+    color: #94a3b8;
+}
+
+/* =============================================
+   İLETİŞİM FORMU TASARIMI (Box Model Kullanımı)
+   ============================================= */
+
+.contact-container {
+    width: 55%;
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 30px 35px;
+    background-color: #ffffff;
+    border: 1px solid #dce3f0;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(60, 90, 138, 0.07);
+}
+
+.form-title {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 24px;
+    color: #1e293b;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label,
+.form-section>label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #374151;
+    font-size: 13px;
+}
+
+.contact-container input[type="text"],
+.contact-container input[type="email"],
+.contact-container input[type="password"],
+.contact-container select,
+.contact-container textarea {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 4px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: 'Inter', Arial, sans-serif;
+    box-sizing: border-box;
+    background-color: #fafbfc;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.contact-container input[type="text"]:focus,
+.contact-container input[type="email"]:focus,
+.contact-container input[type="password"]:focus,
+.contact-container select:focus,
+.contact-container textarea:focus {
+    border-color: #4f6ef7;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.12);
+    background-color: #fff;
+}
+
+.form-section {
+    margin-bottom: 16px;
+}
+
+.selection-box {
+    background-color: #f8f9fa;
+    padding: 12px 15px;
+    border-radius: 8px;
+    border: 1.5px solid #e2e8f0;
+}
+
+.radio-group,
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.radio-group:last-child,
+.checkbox-group:last-child {
+    margin-bottom: 0;
+}
+
+.radio-group input[type="radio"],
+.checkbox-group input[type="checkbox"] {
+    margin-right: 8px;
+    width: auto;
+}
+
+.radio-group label,
+.checkbox-group label {
+    font-weight: normal;
+    color: #444;
+    cursor: pointer;
+    margin-bottom: 0;
+}
+
+.contact-container input[type="file"] {
+    font-size: 14px;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+.button-container {
+    display: flex;
+    gap: 12px;
+    margin-top: 22px;
+}
+
+.btn-submit,
+.btn-reset {
+    flex: 1;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    font-family: 'Inter', Arial, sans-serif;
+    transition: background-color 0.25s ease, transform 0.15s;
+}
+
+.btn-submit:hover,
+.btn-reset:hover {
+    transform: translateY(-2px);
+}
+
+.btn-submit {
+    background-color: #4f6ef7;
+}
+
+.btn-submit:hover {
+    background-color: #3b57e8;
+}
+
+.btn-reset {
+    background-color: #ef4444;
+}
+
+.btn-reset:hover {
+    background-color: #dc2626;
+}
+
+/* =============================================
+   UYGULAMALAR SAYFASI (Hafta 6 – Gelişmiş Stiller)
+   ============================================= */
+
+.app-wrapper {
+    padding: 30px;
+    background-color: #ffffff;
+}
+
+.tab-menu {
+    display: flex;
+    gap: 8px;
+    border-bottom: 2px solid #4f6ef7;
+    margin-bottom: 25px;
+}
+
+.tab-btn {
+    background-color: #f4f7ff;
+    border: 1.5px solid #dce3f0;
+    border-bottom: none;
+    padding: 11px 24px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    transition: background-color 0.25s, color 0.25s;
+    font-weight: 600;
+    color: #64748b;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+.tab-btn:hover {
+    background-color: #eef2ff;
+    color: #4f6ef7;
+}
+
+.tab-btn.active {
+    background-color: #4f6ef7;
+    color: white;
+    border-color: #4f6ef7;
+}
+
+.app-content {
+    display: none;
+    animation: fadeIn 0.35s ease;
+}
+
+.app-content.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.app-group {
+    margin-bottom: 16px;
+    max-width: 420px;
+}
+
+.app-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #374151;
+    font-size: 13px;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+.app-group input,
+.app-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #e2e8f0;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: 'Inter', Arial, sans-serif;
+    background-color: #fafbfc;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.app-group input:focus,
+.app-group select:focus {
+    border-color: #4f6ef7;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(79, 110, 247, 0.12);
+    background-color: #fff;
+}
+
+.btn-calc {
+    padding: 11px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    color: white;
+    background-color: #4f6ef7;
+    transition: background-color 0.25s ease, transform 0.15s;
+    margin-top: 10px;
+    font-family: 'Inter', Arial, sans-serif;
+}
+
+.btn-calc:hover {
+    background-color: #3b57e8;
+    transform: translateY(-2px);
+}
+
+.result-box {
+    margin-top: 24px;
+    padding: 16px 20px;
+    background-color: #fffbf0;
+    border: 1px solid #f0e6c8;
+    border-radius: 10px;
+    display: none;
+    max-width: 420px;
+    box-shadow: 0 2px 10px rgba(234, 179, 8, 0.08);
+}
+
+.result-box h3 {
+    margin-top: 0;
+    margin-bottom: 14px;
+    color: #1e293b;
+    font-size: 17px;
+    border-bottom: 1px solid rgba(0,0,0,0.08);
+    padding-bottom: 10px;
+}
+
+.result-box p { margin: 8px 0; color: #444; font-size: 14px; }
+
+.result-success {
+    background-color: #f0fdf4;
+    color: #166534;
+    border: 1px solid #bbf7d0;
+    border-radius: 10px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 15px;
+    box-shadow: 0 2px 10px rgba(22, 101, 52, 0.07);
+}

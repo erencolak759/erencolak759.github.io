@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laboratuvar Ana Sayfası | Web Programlama Dersi</title>
+    <meta name="description" content="GitHub Pages üzerinde yayınlanan laboratuvar uygulamalarına giriş sayfası.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        @keyframes gradientShift {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(-45deg, #c7d2fe, #dbeafe, #ede9fe, #e0f2fe);
+            background-size: 400% 400%;
+            animation: gradientShift 12s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 16px;
+        }
+
+        /* Glassmorphism kart */
+        .lab-card {
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.65);
+            border-radius: 28px;
+            box-shadow: 0 16px 60px rgba(79,110,247,0.16), 0 4px 20px rgba(0,0,0,0.06);
+            padding: 56px 48px 48px;
+            max-width: 840px;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Badge */
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #4f6ef7, #7c3aed);
+            color: #fff;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 6px 20px;
+            border-radius: 999px;
+            margin-bottom: 22px;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 14px rgba(79,110,247,0.3);
+        }
+
+        /* Başlık — gradient metin */
+        .lab-card h1 {
+            font-size: 2.7rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1e293b 0%, #4f6ef7 55%, #7c3aed 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 14px;
+            line-height: 1.2;
+        }
+
+        .lab-card > p {
+            font-size: 1rem;
+            color: #64748b;
+            max-width: 520px;
+            margin: 0 auto 36px;
+            line-height: 1.75;
+        }
+
+        /* Butonlar */
+        .btn-group {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4f6ef7, #7c3aed);
+            color: #ffffff;
+            border: none;
+            padding: 13px 30px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: transform 0.2s, box-shadow 0.2s;
+            box-shadow: 0 6px 20px rgba(79,110,247,0.35);
+        }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 28px rgba(79,110,247,0.45);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.85);
+            color: #475569;
+            border: 1.5px solid #e2e8f0;
+            padding: 13px 30px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.2s, transform 0.2s, border-color 0.2s;
+        }
+        .btn-secondary:hover {
+            background: #f1f5f9;
+            border-color: #c7d2fe;
+            transform: translateY(-3px);
+        }
+
+        /* Ince çizgi */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, #c7d2fe, transparent);
+            margin-bottom: 24px;
+        }
+
+        /* Haftalara giriş başlığı */
+        .weeks-heading {
+            font-size: 11px;
+            font-weight: 700;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
+        }
+
+        /* Hafta Kartları Grid */
+        .weeks-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        @media (max-width: 640px) {
+            .weeks-grid { grid-template-columns: repeat(2, 1fr); }
+            .lab-card h1 { font-size: 1.8rem; }
+            .lab-card { padding: 36px 20px 32px; }
+        }
+
+        .week-card {
+            background: rgba(255,255,255,0.65);
+            border: 1.5px solid rgba(200,210,255,0.55);
+            border-radius: 14px;
+            padding: 18px 12px;
+            text-align: center;
+            text-decoration: none;
+            color: inherit;
+            transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s, background 0.25s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .week-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(79,110,247,0.07), rgba(124,58,237,0.05));
+            opacity: 0;
+            transition: opacity 0.25s;
+        }
+        .week-card:hover::before { opacity: 1; }
+        .week-card:hover {
+            border-color: #4f6ef7;
+            box-shadow: 0 6px 24px rgba(79,110,247,0.2);
+            transform: translateY(-4px);
+            background: rgba(255,255,255,0.95);
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(79,110,247,0.35); }
+            50%       { box-shadow: 0 0 0 7px rgba(79,110,247,0); }
+        }
+
+        .week-card.active-week {
+            border-color: #4f6ef7;
+            background: linear-gradient(135deg, #eef2ff, #f5f3ff);
+            animation: pulse 2.5s ease infinite;
+        }
+
+        .week-label {
+            font-size: 11px;
+            font-weight: 700;
+            color: #94a3b8;
+            margin-bottom: 6px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .week-title {
+            font-size: 12px;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.4;
+        }
+    </style>
+</head>
+<body>
+    <div class="lab-card">
+        <!-- Badge -->
+        <div class="badge">Web Programlama Dersi</div>
+
+        <!-- Başlık -->
+        <h1>Laboratuvar Ana Sayfası</h1>
+        <p>
+            Bu sayfa GitHub Pages üzerinde yayınlanan laboratuvar uygulamalarına giriş için
+            hazırlanmıştır. Aşağıdaki butondan hafta 7 uygulamasına geçebilirsiniz.
+        </p>
+
+        <!-- Butonlar -->
+        <div class="btn-group">
+            <a href="hafta7.html" class="btn-primary" id="goToHafta7">Hafta 7 Uygulamasına Git</a>
+            <a href="about.html" class="btn-secondary" id="goToPortfolio">Portfolyoma Git</a>
+        </div>
+
+        <!-- Divider -->
+        <div class="divider"></div>
+        <div class="weeks-heading">Haftalık Laboratuvarlar</div>
+
+        <!-- Hafta Kartları Grid -->
+        <div class="weeks-grid">
+            <a href="about.html" class="week-card" id="week1Card">
+                <div class="week-label">Hafta 1</div>
+                <div class="week-title">GitHub Pages</div>
+            </a>
+            <a href="interest.html" class="week-card" id="week2Card">
+                <div class="week-label">Hafta 2</div>
+                <div class="week-title">HTML + CSS</div>
+            </a>
+            <a href="contact.html" class="week-card" id="week3Card">
+                <div class="week-label">Hafta 3</div>
+                <div class="week-title">Form Yapıları</div>
+            </a>
+            <a href="hafta4.html" class="week-card" id="week4Card">
+                <div class="week-label">Hafta 4</div>
+                <div class="week-title">Flexbox</div>
+            </a>
+            <a href="lab-position.html" class="week-card" id="week5Card">
+                <div class="week-label">Hafta 5</div>
+                <div class="week-title">Position</div>
+            </a>
+            <a href="uygulamalar.html" class="week-card" id="week6Card">
+                <div class="week-label">Hafta 6</div>
+                <div class="week-title">Not Hesaplama + Birim Dönüştürücü</div>
+            </a>
+            <a href="hafta7.html" class="week-card active-week" id="week7Card">
+                <div class="week-label">Hafta 7</div>
+                <div class="week-title">Bootstrap + JavaScript</div>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

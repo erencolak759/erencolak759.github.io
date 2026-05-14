@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eren Çolak | Hafta 4 – Flexbox LAB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ── ANA WRAPPER: 100vh + flex-direction: column ── */
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            color: #333;
+            height: 100vh;           /* Zorunlu Şart: 100vh */
+            display: flex;
+            flex-direction: column;  /* flex-direction: column */
+            overflow: hidden;
+        }
+
+        /* ── 1) NAVBAR: 10vh ── */
+        .top-nav {
+            height: 10vh;            /* Zorunlu: 10vh */
+            background: #1e293b;
+            padding: 0 40px;
+            display: flex;                         /* display: flex */
+            justify-content: space-between;        /* justify-content: space-between */
+            align-items: center;                   /* align-items: center */
+            flex-shrink: 0;
+        }
+        .top-nav .logo {
+            font-weight: 800;
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+        }
+        .top-nav nav { display: flex; gap: 6px; }
+        .top-nav nav a {
+            text-decoration: none;
+            color: #94a3b8;
+            font-size: 14px;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 6px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .top-nav nav a:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+        /* ── 2) HERO: 30vh, flex-direction: row, justify-content: space-between, align-items: stretch ── */
+        .hero {
+            height: 30vh;                          /* Zorunlu: 30vh */
+            background: linear-gradient(135deg, #eef2ff 0%, #f0f4fb 100%);
+            padding: 0 40px;
+            display: flex;                         /* display: flex */
+            flex-direction: row;                   /* flex-direction: row */
+            justify-content: space-between;        /* justify-content: space-between */
+            align-items: stretch;                  /* align-items: stretch */
+            gap: 30px;
+            flex-shrink: 0;
+        }
+        .hero-left {
+            flex: 1;
+            display: flex;
+            flex-direction: column;                /* flex-direction: column (2. kullanım) */
+            justify-content: center;
+            gap: 10px;
+        }
+        .hero-left h1 { font-size: 1.6rem; font-weight: 800; color: #1e293b; }
+        .hero-left p  { font-size: 14px; color: #64748b; line-height: 1.6; }
+        .btn-hero {
+            background: #4f6ef7; color: #fff; border: none;
+            padding: 10px 24px; border-radius: 8px; font-size: 13px;
+            font-weight: 600; cursor: pointer; width: fit-content;
+            transition: background 0.2s, transform 0.15s;
+        }
+        .btn-hero:hover { background: #3b57e8; transform: translateY(-2px); }
+
+        .hero-right {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;             /* justify-content: flex-end (3. farklı değer) */
+            align-items: center;                   /* align-items: center (2. farklı değer) */
+        }
+        .hero-illustration {
+            width: 90%; height: 80%;
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #06b6d4 100%);
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 44px;
+            box-shadow: 0 6px 24px rgba(99,102,241,0.25);
+        }
+
+        /* ── 3) KARTLAR BÖLÜMÜ: 30vh, flex-wrap: wrap ── */
+        .cards-section {
+            height: 30vh;            /* Zorunlu: 30vh */
+            padding: 12px 40px;
+            background: #f8faff;
+            border-top: 1px solid #e8eeff;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        .section-title {
+            font-size: 13px; font-weight: 700; color: #64748b;
+            margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;
+        }
+        .cards-flex {
+            display: flex;           /* display: flex */
+            flex-wrap: wrap;         /* flex-wrap: wrap */
+            gap: 10px;
+            height: calc(30vh - 46px);
+        }
+        .card {
+            flex: 1;
+            min-width: 120px;
+            background: #fff;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: box-shadow 0.2s, transform 0.2s;
+        }
+        .card:hover { box-shadow: 0 4px 14px rgba(79,110,247,0.13); transform: translateY(-2px); }
+        .card h3  { font-size: 12px; font-weight: 700; color: #1e293b; margin-bottom: 4px; }
+        .card p   { font-size: 11px; color: #64748b; line-height: 1.4; flex: 1; }
+        .btn-card {
+            background: #4f6ef7; color: #fff; border: none;
+            padding: 4px 12px; border-radius: 5px; font-size: 11px;
+            font-weight: 600; cursor: pointer; margin-top: 6px;
+            transition: background 0.2s;
+        }
+        .btn-card:hover { background: #3b57e8; }
+
+        /* ── 4) FLEX GROW UYGULAMA (RECAP): 20vh, align-items: stretch ── */
+        .flex-grow-section {
+            height: 20vh;            /* Zorunlu: 20vh */
+            padding: 10px 40px;
+            flex-shrink: 0;
+            background: #fff;
+            border-top: 1px solid #e8eeff;
+        }
+        .section-label {
+            font-size: 12px; font-weight: 700; color: #64748b;
+            margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .label-badge {
+            font-size: 10px; background: #f1f5f9; color: #94a3b8;
+            padding: 2px 8px; border-radius: 20px; font-weight: 500;
+        }
+        .flex-row {
+            display: flex;           /* display: flex */
+            gap: 6px;
+            align-items: stretch;   /* align-items: stretch */
+            height: calc(20vh - 42px);
+        }
+        .flex-box {
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center;
+            border-radius: 8px; padding: 10px;
+            font-size: 12px; font-weight: 700;
+        }
+        .flex-box span { font-size: 10px; font-weight: 400; opacity: 0.8; margin-top: 3px; }
+        .box1 { flex-grow: 1; background: #bfdbfe; color: #1e3a5f; }  /* flex-grow: 1 */
+        .box2 { flex-grow: 2; background: #bbf7d0; color: #14532d; }  /* flex-grow: 2 */
+        .box3 { flex-grow: 1; background: #fde68a; color: #78350f; }  /* flex-grow: 1 */
+        .btn-box {
+            margin-top: 6px; background: rgba(0,0,0,0.12);
+            color: inherit; border: none; padding: 3px 10px;
+            border-radius: 4px; font-size: 10px; font-weight: 600; cursor: pointer;
+        }
+
+        /* ── 5) FOOTER: 10vh, justify-content: center, align-items: center ── */
+        .lab-footer {
+            height: 10vh;            /* Zorunlu: 10vh */
+            background: #1e293b;
+            display: flex;           /* display: flex */
+            justify-content: center; /* justify-content: center */
+            align-items: center;     /* align-items: center */
+            flex-shrink: 0;
+        }
+        .lab-footer p { font-size: 13px; color: #94a3b8; }
+    </style>
+</head>
+<body>
+
+    <!-- 1) NAVBAR: 10vh, justify-content: space-between -->
+    <div class="top-nav">
+        <a href="index.html" class="logo">Eren Çolak</a>
+        <nav>
+            <a href="index.html">Ana Sayfa</a>
+            <a href="about.html">Hakkında</a>
+            <a href="interest.html">İlgi Alanlarım</a>
+            <a href="contact.html">İletişim</a>
+        </nav>
+    </div>
+
+    <!-- 2) HERO: 30vh, flex-direction: row, justify-content: space-between, align-items: stretch -->
+    <div class="hero">
+        <div class="hero-left">
+            <h1>Hero Başlık</h1>
+            <p>Açıklama metni buraya gelir. <strong>Flexbox</strong> ile sol ve sağ bölüm yan yana hizalanmıştır.</p>
+            <button class="btn-hero">Buton</button>
+        </div>
+        <div class="hero-right">
+            <div class="hero-illustration">🖥️</div>
+        </div>
+    </div>
+
+    <!-- 3) KARTLAR BÖLÜMÜ: 30vh, display:flex, flex-wrap:wrap -->
+    <div class="cards-section">
+        <div class="section-title">Kartlar Bölümü</div>
+        <div class="cards-flex">
+            <div class="card"><h3>Kart Başlığı</h3><p>Kısa açıklama metni.</p><button class="btn-card">Buton</button></div>
+            <div class="card"><h3>Kart Başlığı</h3><p>Kısa açıklama metni.</p><button class="btn-card">Buton</button></div>
+            <div class="card"><h3>Kart Başlığı</h3><p>Kısa açıklama metni.</p><button class="btn-card">Buton</button></div>
+            <div class="card"><h3>Kart Başlığı</h3><p>Kısa açıklama metni.</p><button class="btn-card">Buton</button></div>
+            <div class="card"><h3>Kart Başlığı</h3><p>Kısa açıklama metni.</p><button class="btn-card">Buton</button></div>
+            <div class="card"><h3>Kart Başlığı</h3><p>Kısa açıklama metni.</p><button class="btn-card">Buton</button></div>
+        </div>
+    </div>
+
+    <!-- 4) FLEX GROW UYGULAMA: 20vh, align-items: stretch, flex-grow 1-2-1 -->
+    <div class="flex-grow-section">
+        <div class="section-label">Flex Grow Uygulama (Recap)</div>
+        <div class="flex-row">
+            <div class="flex-box box1">1 Kutu<span>flex-grow: 1</span><button class="btn-box">Buton</button></div>
+            <div class="flex-box box2">2 Kutu<span>flex-grow: 2</span><button class="btn-box">Buton</button></div>
+            <div class="flex-box box3">3 Kutu<span>flex-grow: 1</span><button class="btn-box">Buton</button></div>
+        </div>
+    </div>
+
+    <!-- 5) FOOTER: 10vh, justify-content: center, align-items: center -->
+    <footer class="lab-footer">
+        <p>© 2026 – Temel Flexbox Örneği</p>
+    </footer>
+
+</body>
+</html>

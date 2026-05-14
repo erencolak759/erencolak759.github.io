@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eren Çolak | CSS Position Lab</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="lab-page">
+
+    <!-- Scroll sırasında sabit duran öğe (position: fixed) -->
+    <a href="index.html" class="fixed-helper">Ana Sayfaya Dön</a>
+
+    <header class="lab-header">
+        <h1>Üniversite Etkinlik Takvimi</h1>
+    </header>
+
+    <main class="lab-main">
+        <!-- Ana Kapsayıcı (position: relative) -->
+        <div class="announcement-card">
+            
+            <!-- Bilgi Etiketleri (position: absolute) -->
+            <div class="badge badge-free">Ücretsiz</div>
+            <div class="badge badge-date">24 Nisan</div>
+            <div class="badge badge-action">Son Kayıt</div>
+
+            <!-- Üst üste binen dekoratif öğe (z-index) -->
+            <div class="card-decoration"></div>
+
+            <!-- Kart İçeriği -->
+            <div class="card-content">
+                <h2>Linux ve Sistem Geliştirme Zirvesi</h2>
+                <p>
+                    Teknoloji Fakültesi öğrencileri için hazırlanan bu etkinlikte, düşük seviyeli programlama 
+                    ve işletim sistemleri mimarisini ele alıyoruz. CSS position özelliklerini (relative, absolute, fixed, z-index, hover ve animasyonlar)
+                    birlikte kullanarak bu duyuru arayüzünü oluşturduk.
+                </p>
+                <div class="location-box">Konum: Teknoloji Fakültesi Konferans Salonu</div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="lab-footer">
+        <p>2026 - LAB Position Örnek Çalışması</p>
+    </footer>
+
+</body>
+</html>
